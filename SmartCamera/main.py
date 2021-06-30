@@ -6,12 +6,17 @@ from .mail import sendEmail
 import time
 import sys
 from flask_login import login_required, current_user
+import os 
 
 main = Blueprint('main', __name__)
 
+APP_ROOT = os.path.dirname(os.path.abspath(__file__))
+APP_MODELS = os.path.join(APP_ROOT, 'models')
+APP_MODELS_FACE = os.path.join(APP_ROOT, 'models/facial_recognition_model.xml')
+
 email_update_interval = 600 # sends an email only once in this time interval
 video_camera = VideoCamera(flip=True) # creates a camera object, flip vertically
-object_classifier = cv2.CascadeClassifier("models/facial_recognition_model.xml") # an opencv classifier
+object_classifier = cv2.CascadeClassifier(APP_MODELS_FACE) # an opencv classifier
 
 last_epoch = 0
 
