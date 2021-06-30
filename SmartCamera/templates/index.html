@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+  <div class="container">
+    <div class="row">
+        <div class="col-md-8">
+          <div class="container">
+            <h3>Pi security Feed</h3>
+            <hr>
+            <img id="bg" src="{{ url_for('main.video_feed') }}">
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="content-section">
+              <h3>Notifications</h3>
+                <ul class="list-group">
+                  <li class="list-group-item list-group-item-light">Display Alerts</li>  
+                  <li class="list-group-item list-group-item-light">Display Informations(ML)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+  </div>
+{% endblock content %}
+
+

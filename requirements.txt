@@ -1,0 +1,5 @@
+imutils
+flask
+picamera[array]
+Flask-sqlalchemy
+flask-login
