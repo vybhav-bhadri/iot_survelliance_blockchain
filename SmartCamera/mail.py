@@ -5,7 +5,7 @@ from email.mime.image import MIMEImage
 
 fromEmail = 'mail2whybow@gmail.com'
 
-fromEmailPassword = "don'tforgetthispassword"
+fromEmailPassword = "capstoneproject2021"
 
 # Email you want to send the update to
 toEmail = 'mail2whybow@gmail.com'
