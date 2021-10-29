@@ -1,12 +1,13 @@
 import cv2
-from imutils.video.pivideostream import PiVideoStream
+#from imutils.video.pivideostream import PiVideoStream
+from imutils.video import VideoStream
 import imutils
 import time
 import numpy as np
 
 class VideoCamera(object):
     def __init__(self, flip = False):
-        self.vs = PiVideoStream().start()
+        self.vs = VideoStream().start()
         self.flip = flip
         time.sleep(2.0)
 
