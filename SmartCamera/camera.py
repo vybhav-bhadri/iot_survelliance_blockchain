@@ -14,19 +14,19 @@ class VideoCamera(object):
     def __del__(self):
         self.vs.stop()
 
-    def flip_if_needed(self, frame):
-        if self.flip:
-            return np.flip(frame, 0)
-        return frame
+    # def flip_if_needed(self, frame):
+    #     if self.flip:
+    #         return np.flip(frame, 0)
+    #     return frame
 
     def get_frame(self):
-        frame = self.flip_if_needed(self.vs.read())
+        frame = self.vs.read()
         ret, jpeg = cv2.imencode('.jpg', frame)
         return jpeg.tobytes()
 
     def get_object(self, classifier):
         found_objects = False
-        frame = self.flip_if_needed(self.vs.read()).copy() 
+        frame = self.vs.read().copy() 
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
         objects = classifier.detectMultiScale(
