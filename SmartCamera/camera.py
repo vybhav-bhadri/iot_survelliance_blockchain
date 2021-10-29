@@ -8,7 +8,7 @@ import numpy as np
 class VideoCamera(object):
     def __init__(self, flip = False):
         self.vs = VideoStream().start()
-        self.flip = flip
+        # self.flip = flip
         time.sleep(2.0)
 
     def __del__(self):
