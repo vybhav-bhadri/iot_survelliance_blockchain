@@ -2,19 +2,37 @@ from flask import Blueprint,render_template,Response
 from . import db
 from .camera import VideoCamera
 import cv2
-from .mail import sendEmail
 import time
 import sys
 from flask_login import login_required, current_user
-import os 
+import os
+import json
+import base64
+import requests
+import datetime 
 
 main = Blueprint('main', __name__)
+
+#api address
+
+api = 'http://localhost:8000/api/pidata-create/'
+
+#image address
+image_file = ''
+
+#device_id
+device_id = 'ipcamera_1'
+
+#face_id
+face_id = 1
+
+headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 APP_MODELS = os.path.join(APP_ROOT, 'models')
 APP_MODELS_FACE = os.path.join(APP_ROOT, 'models/facial_recognition_model.xml')
 
-email_update_interval = 500 # sends an email only once in this time interval
+image_update_interval = 10 # sends an json data only once in this time interval
 video_camera = VideoCamera(flip=True) # creates a camera object, flip vertically
 object_classifier = cv2.CascadeClassifier(APP_MODELS_FACE) # an opencv classifier
 
@@ -38,16 +56,29 @@ last_epoch = 0
 
 def check_for_objects():
 	global last_epoch
+	global face_id
 	while True:
 		try:
 			frame, found_obj = video_camera.get_object(object_classifier)
-			if found_obj and (time.time() - last_epoch) > email_update_interval:
+			if found_obj and (time.time() - last_epoch) > image_update_interval:
 				last_epoch = time.time()
-				print ("Sending email...")
-				sendEmail(frame) #print in our home as a notification
-				print ("done!")
+				timestamp = datetime.datetime.now()
+				# timestamp = timestamp.strftime("%c")
+				print("sending image to api..")
+				im_bytes = frame
+				# print('hey')
+				im_b64 = base64.b64encode(im_bytes).decode("utf8")
+				#json object(face_id,)
+				# print('hey-1')
+				payload = json.dumps({"Face_Id":face_id,"ImageData": im_b64,"Timestamp":timestamp,"Device_Id":device_id},default=str)
+				# print('hey-2')
+				response = requests.post(api, data=payload, headers=headers)
+				# print('hey-3')
+				face_id = face_id + 1
+				print('done!')
 		except:
-			print ("Error sending email: ", sys.exc_info()[0])
+			print ("Error sending image: ", sys.exc_info())
+
 
 
 
