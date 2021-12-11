@@ -3,3 +3,4 @@ flask
 picamera[array]
 Flask-sqlalchemy
 flask-login
+requests
