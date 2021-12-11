@@ -15,7 +15,9 @@ main = Blueprint('main', __name__)
 
 #api address
 
-api = 'http://localhost:8585/pidata'
+api = 'http://192.168.1.9:8585/pidata'
+
+api_test = 'http://192.168.1.9:8080/test'
 
 #image address
 image_file = ''
@@ -72,7 +74,7 @@ def check_for_objects():
 				# print('hey-1')
 				payload = json.dumps({"Face_Id":face_id,"ImageData": im_b64,"Timestamp":timestamp,"Device_Id":device_id},default=str)
 				# print('hey-2')
-				response = requests.post(api, data=payload, headers=headers)
+				response = requests.post(api_test, data=payload, headers=headers)
 				# print('hey-3')
 				face_id = face_id + 1
 				print('done!')
