@@ -15,7 +15,7 @@ main = Blueprint('main', __name__)
 
 #api address
 
-api = 'http://localhost:8000/api/pidata-create/'
+api = 'http://localhost:8585/pidata'
 
 #image address
 image_file = ''
