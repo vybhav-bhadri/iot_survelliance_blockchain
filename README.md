@@ -51,8 +51,8 @@ Start server
 $python3 run.py
 ```
 In code main.py has logic to send JSON Data, camera.py has the logic to detect faces
+In function check_for_objects 
 ```
-## In function check_for_objects 
 payload = json.dumps({"Face_Id":face_id,"ImageData": im_b64,"Timestamp":timestamp,"Device_Id":device_id},default=str)
 ```
 To send post request to an api end point
