@@ -1,6 +1,8 @@
 ## Pi Face detection - IoT Network
 Goal of project is to store detected images in a tamper resistant database. Hyperledger fabric is used to store detected images. This readme file explains how to setup the IoT network which sends detected images to IoT Gateway.
 
+## Note - branch testjson is has the working code, changes will be commited to master in future
+
 ## Table of contents
 * [Technolgies](#technologies)
 * [Setup](#setup)
