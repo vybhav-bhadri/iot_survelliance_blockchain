@@ -60,15 +60,11 @@ $./ngrok http 5000
 ```
 This will generate a link and use this link to access stream.
 
-Note : Current implementation is a prototype of a survelliance system. To use this in real world features such as user authentication, admin panel and auto startup of the camera need to be implemented.
+###Note : If face is detected, captured image is converted into base64 format and is sent to IoT gateway along with device id,face id and timestamp at which image is captured.
 
 # Snapshots
 
 ## Rasberry pi setup
 ![IMG_20210629_181909](https://user-images.githubusercontent.com/54641149/124130854-d64c2580-da9c-11eb-8f89-3cd8644014a9.jpg)
-
-## Accessing Pi camera remotely using ngrok
-![Screenshot_20210629-182313](https://user-images.githubusercontent.com/54641149/124131090-16aba380-da9d-11eb-89f0-7fd3f70f5b2d.jpg)
-### Note: User authentication can be implemeted using flask_login. Currently Register User does not have any verification by the admin.  
 
 ### Note: If face is detected, data is sent as a JSON object to IoT gateway
