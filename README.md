@@ -60,7 +60,7 @@ $./ngrok http 5000
 ```
 This will generate a link and use this link to access stream.
 
-###Note : If face is detected, captured image is converted into base64 format and is sent to IoT gateway along with device id,face id and timestamp at which image is captured.
+### Note : If face is detected, captured image is converted into base64 format and is sent to IoT gateway along with device id,face id and timestamp at which image is captured.
 
 # Snapshots
 
