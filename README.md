@@ -50,6 +50,15 @@ Start server
 ```
 $python3 run.py
 ```
+In code main.py has logic to send JSON Data, camera.py has the logic to detect faces
+```
+## In function check_for_objects 
+payload = json.dumps({"Face_Id":face_id,"ImageData": im_b64,"Timestamp":timestamp,"Device_Id":device_id},default=str)
+```
+To send post request to an api end point
+```
+response = requests.post(api_test, data=payload, headers=headers)
+```
 Stream can be viewed by entering localhost:5000 in your browser.You can also access the stream locally by entering ip address of the rasberry pi running the server.
 To find the local IP address of your Pi, open terminal and run
 ```
